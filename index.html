@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生誕祭特設ページ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 生誕祭特設ページ 🎂</h1>
+        <p>○○さんの誕生日をお祝いしましょう！</p>
+        <div id="countdown">カウントダウン: 計算中...</div>
+        <div class="event-info">
+            <h2>イベント詳細</h2>
+            <p>📅 日時: 2025年3月10日 19:00〜</p>
+            <p>📍 場所: オンライン (Zoomリンクは後日公開)</p>
+            <p>🎁 プレゼント企画や特別ゲストも！？</p>
+        </div>
+    </div>
+    <script>
+        function updateCountdown() {
+            const eventDate = new Date("2025-03-10T19:00:00").getTime();
+            const now = new Date().getTime();
+            const timeLeft = eventDate - now;
+            
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                document.getElementById("countdown").innerText = `あと ${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
+            } else {
+                document.getElementById("countdown").innerText = "🎉 生誕祭が始まりました！";
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
